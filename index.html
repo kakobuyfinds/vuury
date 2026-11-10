@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="theme-color" content="#10245a">
+  <title>HubbuyCN spreadsheet | Productlinks, maten en QC-foto’s</title>
+  <meta name="description" content="Gebruik een HubbuyCN spreadsheet om productlinks, maten en QC-foto’s te vergelijken. Bekijk tien categorieën en maak een leveringsraming voor Nederland of België.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="nl_NL">
+  <meta property="og:title" content="HubbuyCN spreadsheet | Productlinks, maten en QC-foto’s">
+  <meta property="og:description" content="Kies een categorie, controleer de productvariant en vergelijk de kosten tot aan je voordeur.">
+  <link rel="icon" href="https://www.cafans.com/favicon.ico">
+  <link rel="preconnect" href="https://static.nike.com">
+  <!--
+    Redactioneel onderzoek. Bing gaf voor de exacte zoekopdracht geen organische
+    resultaten terug. De onderstaande tien domeinen komen uit aanvullend
+    webonderzoek. Hun volgorde geeft geen Bing-posities aan.
+    jadeship.com/search/spreadsheet/hubbuycn — bronplatforms en zoekfilters
+    hubbuycn.cc/ — indeling naar artikelsoort
+    hubbuy.net/ — productvermeldingen en bronlinks
+    qcradar.com/hubbuy-spreadsheet — kwaliteitsfoto’s en wisselkoers
+    taofind.com/spreadsheets/hubbuycn — vergelijking van aankoopkosten
+    hubbuy-cn.com/ — productvarianten en QC-gidsen
+    hubbuycn.online/ — lokale verzendvragen en categorieën
+    hubbuycn-spreadsheet.com/hubbuycn-finds — selecteren op kenmerken
+    hubbuycnsheetu.com/ — pakketvolume en logistiek
+    hubbuycn.net/faq.html — oorspronkelijke links, maattabellen en gewichten
+  -->
+  <style>
+    :root{color-scheme:light;--navy:#10245a;--ink:#182549;--muted:#4a5670;--paper:#f3f6fc;--line:#cbd6ec;--accent:#ffd6bd;--white:#fff}
+    *,*::before,*::after{box-sizing:border-box}
+    body{margin:0;background:var(--paper);color:var(--ink);font:1rem/1.6 system-ui,-apple-system,sans-serif}
+    a{color:inherit;text-underline-offset:.2em}
+    :focus-visible{outline:3px solid #a94011;outline-offset:4px}
+    h1,h2,h3,p,figure{margin:0}
+    h1,h2,h3{line-height:1.15}
+    h1{font-size:clamp(2.45rem,5.8vw,5rem);letter-spacing:-.065em;overflow-wrap:anywhere}
+    h2{font-size:clamp(1.65rem,3.1vw,2.65rem);letter-spacing:-.035em}
+    h3{font-size:1.25rem;letter-spacing:-.02em}
+    .wrap{width:min(72rem,calc(100% - 2rem));margin-inline:auto}
+    .mast,.footer{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem 1rem;padding-block:.9rem}
+    .brand{font-weight:850;text-decoration:none}
+    .kicker{font-size:.76rem;letter-spacing:.11em;text-transform:uppercase;font-weight:800}
+    .muted{color:var(--muted)}
+    .hero{background:var(--navy);color:var(--white)}
+    .hero-grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);align-items:center;gap:clamp(1rem,4vw,3rem);padding-block:clamp(1.4rem,4vw,3.25rem)}
+    .hero .kicker{color:var(--accent);margin-bottom:.55rem}
+    .intro{max-width:53ch;margin-top:.8rem;color:#edf2ff}
+    .cover{min-width:0;border:1px solid #aabbe8;background:#e8ebef;color:var(--navy)}
+    .cover img{display:block;width:100%;height:clamp(11.5rem,26vw,20rem);object-fit:cover}
+    figcaption{padding:.45rem .65rem;font-size:.86rem}
+    .cover figcaption{background:var(--accent);font-weight:750}
+    .catalog{padding:1.25rem 0 0}
+    .catalog h2{font-size:clamp(1.3rem,2.7vw,1.85rem)}
+    .catalog ul{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:1px;list-style:none;margin:.7rem 0 0;padding:1px;background:var(--line)}
+    .catalog a{display:flex;align-items:center;gap:.5rem;min-height:3rem;height:100%;padding:.45rem .65rem;background:var(--white);line-height:1.25;font-weight:700;text-decoration:none;overflow-wrap:anywhere}
+    .catalog a:hover{background:#e4edff;text-decoration:underline}
+    .catalog a:focus-visible{position:relative;z-index:1}
+    .num{color:#465c8a;font-size:.75rem;font-variant-numeric:tabular-nums}
+    .editorial{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:clamp(1.5rem,4vw,3.75rem);padding-block:clamp(2.3rem,5vw,4rem)}
+    .editorial h2{margin:.3rem 0 .65rem}
+    .story{padding:1rem 0;border-bottom:1px solid var(--line)}
+    .story p,.note{margin-top:.45rem}
+    .note{font-size:.88rem}
+    .gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.7rem;margin-top:.85rem}
+    .gallery figure{border:1px solid var(--line);background:var(--white)}
+    .gallery img{display:block;width:100%;height:auto;aspect-ratio:1;object-fit:contain;background:#f8f8f8}
+    .check{margin-top:1rem;border-left:4px solid #4966ac;padding:.65rem .9rem;background:#e5edff}
+    .check dl{margin:.5rem 0 0}
+    .check dl div{padding:.3rem 0;border-top:1px solid #bccbe9}
+    .check dt{font-weight:750}
+    .check dd{margin:0;color:var(--muted)}
+    .faq{padding:clamp(1.1rem,3vw,2rem);background:var(--white);border:1px solid var(--line);border-top:4px solid var(--navy)}
+    .faq h2{margin-bottom:.6rem}
+    .faq details{border-top:1px solid var(--line)}
+    .faq summary{padding:.7rem .2rem;cursor:pointer;font-weight:750}
+    .faq details p{max-width:72ch;margin:0 0 .75rem;padding-inline:.2rem}
+    .footer{margin-top:1.5rem;border-top:1px solid var(--line);font-size:.88rem}
+    @media(max-width:58rem){.catalog ul{grid-template-columns:repeat(3,minmax(0,1fr))}}
+    @media(max-width:39rem){.hero-grid,.editorial{grid-template-columns:1fr}.cover img{height:clamp(9rem,39vw,14rem)}.catalog ul{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "inLanguage": "nl",
+        "name": "HubbuyCN spreadsheet | Productlinks, maten en QC-foto’s",
+        "description": "Gebruik een HubbuyCN spreadsheet om productlinks, maten en QC-foto’s te vergelijken. Bekijk tien categorieën en maak een leveringsraming voor Nederland of België.",
+        "hasPart": [
+          {"@type": "Article", "inLanguage": "nl", "headline": "Zo controleer je een oude productlink"},
+          {"@type": "Article", "inLanguage": "nl", "headline": "Meet een kledingstuk dat je al draagt"},
+          {"@type": "Article", "inLanguage": "nl", "headline": "Vraag om de QC-foto die je nodig hebt"},
+          {"@type": "Article", "inLanguage": "nl", "headline": "Bereken wat er aan je voordeur bijkomt"},
+          {"@id": "#faq"}
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "#faq",
+        "inLanguage": "nl",
+        "name": "Veelgestelde vragen",
+        "mainEntity": [
+          {"@type": "Question", "name": "Wat is een HubbuyCN spreadsheet?", "acceptedAnswer": {"@type": "Answer", "text": "Het is een overzicht waarmee je productvermeldingen kunt verzamelen en vergelijken. Een rij kan een bronlink, een maat, een kleur en foto’s bevatten. Controleer de gegevens bij de oorspronkelijke verkoper."}},
+          {"@type": "Question", "name": "Wat doe ik als een productlink niet meer werkt?", "acceptedAnswer": {"@type": "Answer", "text": "Zoek de oorspronkelijke verkoper en het artikelnummer op in de rij. Controleer op de bronpagina of de kleur, maat en uitvoering overeenkomen voordat je de link bewaart."}},
+          {"@type": "Question", "name": "Kan ik met QC-foto’s de echtheid vaststellen?", "acceptedAnswer": {"@type": "Answer", "text": "Nee. Met QC-foto’s kun je zichtbare details zoals naden, slijtage en afmetingen controleren. Vraag de verkoper naar de herkomst en koop bij een erkend verkooppunt als echtheid voor jou doorslaggevend is."}},
+          {"@type": "Question", "name": "Hoe vergelijk ik verzendkosten via HubbuyCN?", "acceptedAnswer": {"@type": "Answer", "text": "Gebruik voor elke verzendoptie dezelfde bestemming, verpakte afmetingen en hetzelfde pakketgewicht. Noteer ook de artikelprijs, eventuele servicekosten en de verwachte invoerkosten in euro’s."}},
+          {"@type": "Question", "name": "Waar komen de categorielinks uit?", "acceptedAnswer": {"@type": "Answer", "text": "De tien categorielinks openen de bijbehorende categorieën op cafans.com. Deze gids is onafhankelijk van HubbuyCN en de afgebeelde merken."}}
+        ]
+      }
+    ]
+  }
+  </script>
+<link rel="canonical" href="https://kakobuyfinds.github.io/vuury/">
+</head>
+<body>
+  <header class="mast wrap">
+    <a class="brand" href="https://www.cafans.com">www.cafans.com</a>
+    <p class="kicker muted">Nederlandstalige koopgids</p>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="titel">
+      <div class="hero-grid wrap">
+        <div>
+          <p class="kicker">Productlinks, pasvorm en pakketkosten</p>
+          <h1 id="titel">HubbuyCN spreadsheet</h1>
+          <p class="intro">Gebruik een HubbuyCN spreadsheet om schoenen, kleding en accessoires te vergelijken. Kies eerst een categorie. Bewaar daarna per artikel de oorspronkelijke productlink, de gewenste variant en de gegevens die je nog bij de verkoper moet controleren.</p>
+        </div>
+        <figure class="cover">
+          <img src="https://static.nike.com/a/images/w_800,q_auto,f_auto/eb36a5c4-dd10-40a5-913d-920ce7119fcc/lanseringsdato-for-cortez-%C2%ABvarsity-red-white-blue%C2%BB-fz1347-100.jpg" width="800" height="800" alt="Witte Nike Cortez van opzij met een rode Swoosh en een blauwe streep langs de zool" loading="eager" fetchpriority="high" decoding="async">
+          <figcaption>Modelreferentie · Nike Cortez</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <nav class="catalog wrap" aria-labelledby="categorieen">
+      <h2 id="categorieen">Bekijk de categorieën op cafans.com</h2>
+      <ul>
+        <li><a href="https://cafans.com/category-911-Shoes.html"><span class="num" aria-hidden="true">01</span>Schoenen</a></li>
+        <li><a href="https://cafans.com/category-912-Hoodies%2FSweaters.html"><span class="num" aria-hidden="true">02</span>Hoodies en truien</a></li>
+        <li><a href="https://cafans.com/category-913-T-Shirts.html"><span class="num" aria-hidden="true">03</span>T-shirts</a></li>
+        <li><a href="https://cafans.com/category-914-Jackets.html"><span class="num" aria-hidden="true">04</span>Jassen</a></li>
+        <li><a href="https://cafans.com/category-915-Pants%2FShorts.html"><span class="num" aria-hidden="true">05</span>Broeken en shorts</a></li>
+        <li><a href="https://cafans.com/category-916-Headwear.html"><span class="num" aria-hidden="true">06</span>Petten en mutsen</a></li>
+        <li><a href="https://cafans.com/category-917-Sets.html"><span class="num" aria-hidden="true">07</span>Kledingsets</a></li>
+        <li><a href="https://cafans.com/category-918-underwear%2Funderpants.html"><span class="num" aria-hidden="true">08</span>Ondergoed</a></li>
+        <li><a href="https://cafans.com/category-919-Jersey.html"><span class="num" aria-hidden="true">09</span>Sportshirts</a></li>
+        <li><a href="https://cafans.com/category-920-Accessories.html"><span class="num" aria-hidden="true">10</span>Accessoires</a></li>
+      </ul>
+    </nav>
+
+    <div class="editorial wrap">
+      <section aria-labelledby="artikelen">
+        <p class="kicker muted">Van zoekresultaat naar keuze</p>
+        <h2 id="artikelen">Vier controles voor je bestelt</h2>
+        <article class="story">
+          <h3>Zo controleer je een oude productlink</h3>
+          <p>Bij HubbuyCN finds kan dezelfde productfoto bij verschillende uitvoeringen staan. Open bij het vergelijken van HubbuyCN productlinks eerst de oorspronkelijke verkoperspagina. Zoek bij een foutmelding het artikelnummer of de verkopersnaam terug. Controleer of de Taobao-, Weidian- of 1688-vermelding dezelfde kleurvariant, maat en setinhoud toont. Noteer de datum waarop je de bron hebt gecontroleerd.</p>
+        </article>
+        <article class="story">
+          <h3>Meet een kledingstuk dat je al draagt</h3>
+          <p>Leg een goed passende hoodie plat neer. Meet de borstbreedte van oksel tot oksel, de schouderbreedte en de mouwlengte. Vergelijk die cijfers met de maattabel in centimeters en controleer of die tabel een platte breedte of een omtrek vermeldt. Gebruik bij sneakers je voetlengte én de maattabel van het gekozen model. Noteer bij een pet de verstelbare hoofdomtrek en bij een ring de binnendiameter.</p>
+        </article>
+        <article class="story">
+          <h3>Vraag om de QC-foto die je nodig hebt</h3>
+          <p>Gebruik HubbuyCN QC-foto’s om het ontvangen artikel te vergelijken met de gekozen uitvoering. Vraag bij schoenen om een zijaanzicht van beide schoenen en een foto van het maatlabel. Vraag bij kleding om een detailfoto van de naden, rits of print. Wil je weten of een armband past, vraag dan om een foto van de sluiting en een meting van de draagbare lengte.</p>
+        </article>
+        <article class="story">
+          <h3>Bereken wat er aan je voordeur bijkomt</h3>
+          <p>Maak voor levering in Nederland of België een raming in euro’s. Neem de artikelprijs, binnenlandse verzending, eventuele servicekosten, internationale pakketkosten en mogelijke invoerkosten op. Vraag naar het pakketgewicht én de verpakte afmetingen. Bij een ruime schoenendoos kan de vervoerder rekenen op basis van het volumetrisch gewicht. Vergelijk opties voor dezelfde postcode en dezelfde verpakking.</p>
+        </article>
+      </section>
+
+      <aside aria-labelledby="referenties">
+        <p class="kicker muted">Kijken en vergelijken</p>
+        <h2 id="referenties">Merkbeelden als referentie</h2>
+        <p class="note muted">De foto’s illustreren modellen, afwerking en accessoires. Bekijk de gekozen vermelding voor de uitvoering en beschikbaarheid.</p>
+        <div class="gallery">
+          <figure>
+            <img src="https://au.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-signature-hoodie-with-embroidery--HNY56WIHN900_PM2_Front%20view.jpg?bgcolor=%23f8f8f8&amp;impolicy=bgcolor&amp;wid=420" width="490" height="490" alt="Zwarte Louis Vuitton Signature-hoodie met lichte trekkoorden en borstborduursel" loading="lazy" decoding="async">
+            <figcaption>Louis Vuitton · hoodie</figcaption>
+          </figure>
+          <figure>
+            <img src="https://media.gucci.com/style/DarkGray_Center_0_0_490x490/1768323606/872632_4HBJP_1066_002_100_0000_Light-casquette-gg-avec-bande-web.jpg" width="490" height="490" alt="Zwarte Gucci GG-pet met groen-rode Web-streep, gedragen door een model" loading="lazy" decoding="async">
+            <figcaption>Gucci · GG-pet</figcaption>
+          </figure>
+          <figure>
+            <img src="https://assets.hermes.com/is/image/hermesproduct/109507B%2000_front_wm_101?%24product_default_bg%24=&amp;wid=480" width="480" height="640" alt="Zilveren Hermès Chaîne d’ancre Enchaînée-ring met ankerschakels" loading="lazy" decoding="async">
+            <figcaption>Hermès · zilveren ring</figcaption>
+          </figure>
+          <figure>
+            <img src="https://assets.christiandior.com/is/image/diorprod/B1310PTCRSD301_E01?%24default_GHC%24=&amp;bfc=on&amp;crop=467%2C327%2C1062%2C1178&amp;wid=480&amp;qlt=75" width="480" height="533" alt="Goudkleurige Dior Petit CD-armband met CD-initialen en een witte kunsthars­parel" loading="lazy" decoding="async">
+            <figcaption>Dior · Petit CD-armband</figcaption>
+          </figure>
+        </div>
+        <section class="check" aria-labelledby="velden">
+          <h3 id="velden">Noteer dit per artikel</h3>
+          <dl>
+            <div><dt>Bron</dt><dd>Verkoper, productlink, artikelnummer en controledatum.</dd></div>
+            <div><dt>Uitvoering</dt><dd>Kleur, maat in centimeters, materiaal en inhoud van de set.</dd></div>
+            <div><dt>Controle</dt><dd>Ontbrekende fotodetails, verpakte afmetingen en totaalraming in euro’s.</dd></div>
+          </dl>
+        </section>
+      </aside>
+    </div>
+
+    <section class="faq wrap" id="faq" aria-labelledby="vragen">
+      <h2 id="vragen">Veelgestelde vragen</h2>
+      <details open>
+        <summary>Wat is een HubbuyCN spreadsheet?</summary>
+        <p>Het is een overzicht waarmee je productvermeldingen kunt verzamelen en vergelijken. Een rij kan een bronlink, een maat, een kleur en foto’s bevatten. Controleer de gegevens bij de oorspronkelijke verkoper.</p>
+      </details>
+      <details>
+        <summary>Wat doe ik als een productlink niet meer werkt?</summary>
+        <p>Zoek de oorspronkelijke verkoper en het artikelnummer op in de rij. Controleer op de bronpagina of de kleur, maat en uitvoering overeenkomen voordat je de link bewaart.</p>
+      </details>
+      <details>
+        <summary>Kan ik met QC-foto’s de echtheid vaststellen?</summary>
+        <p>Nee. Met QC-foto’s kun je zichtbare details zoals naden, slijtage en afmetingen controleren. Vraag de verkoper naar de herkomst en koop bij een erkend verkooppunt als echtheid voor jou doorslaggevend is.</p>
+      </details>
+      <details>
+        <summary>Hoe vergelijk ik verzendkosten via HubbuyCN?</summary>
+        <p>Gebruik voor elke verzendoptie dezelfde bestemming, verpakte afmetingen en hetzelfde pakketgewicht. Noteer ook de artikelprijs, eventuele servicekosten en de verwachte invoerkosten in euro’s.</p>
+      </details>
+      <details>
+        <summary>Waar komen de categorielinks uit?</summary>
+        <p>De tien categorielinks openen de bijbehorende categorieën op cafans.com. Deze gids is onafhankelijk van HubbuyCN en de afgebeelde merken.</p>
+      </details>
+    </section>
+  </main>
+
+  <footer class="footer wrap">
+    <p class="muted">Onafhankelijke Nederlandstalige koopgids</p>
+    <a href="https://www.cafans.com">Bekijk www.cafans.com</a>
+  </footer>
+</body>
+</html>
